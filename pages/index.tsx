@@ -3,9 +3,10 @@ import Editor from "@monaco-editor/react";
 import jsonabc from "jsonabc";
 import { CheckIcon, TrashIcon } from "@heroicons/react/solid";
 import { NextSeo } from "next-seo";
+import useLocalStorage from "use-local-storage";
 
 function HomePage() {
-  const [value, setValue] = useState<any>();
+  const [value, setValue] = useLocalStorage<string>("data", "");
 
   const handleJSONParse = () => {
     if (!value) return;
@@ -31,7 +32,7 @@ function HomePage() {
         </button>
         <button
           className="flex justify-center items-center h-12 w-12 bg-red-500"
-          onClick={() => setValue(null)}
+          onClick={() => setValue("")}
         >
           <TrashIcon className="h-8 w-8 text-white" />
         </button>
